@@ -1,35 +1,34 @@
-/*
- * File: 101-print_comb4.c
- * Auth: Brennan D Baraban
- */
-
 #include <stdio.h>
 
 /**
- * main - Prints all possible combinations of three different digits,
- *        in ascending order, separated by a comma followed by a space.
+ * main - Entry point of the program
  *
- * Return: Always 0.
+ * Description: This program prints all possible combinations
+ * of three different digits in ascending order.
+ *
+ * Return: Always 0 (success)
  */
 int main(void)
 {
-	int digit1, digit2, digit3;
+	int first_digit;
+	int second_digit;
+	int third_digit;
 
-	for (digit1 = 0; digit1 < 8; digit1++)
+	for (first_digit = 0; first_digit < 10; first_digit++)
 	{
-		for (digit2 = digit1 + 1; digit2 < 9; digit2++)
+		for (second_digit = first_digit + 1; second_digit < 10; second_digit++)
 		{
-			for (digit3 = digit2 + 1; digit3 < 10; digit3++)
+			for (third_digit = second_digit + 1; third_digit < 10; third_digit++)
 			{
-				putchar((digit1 % 10) + '0');
-				putchar((digit2 % 10) + '0');
-				putchar((digit3 % 10) + '0');
+				putchar(first_digit + '0');
+				putchar(second_digit + '0');
+				putchar(third_digit + '0');
 
-				if (digit1 == 7 && digit2 == 8 && digit3 == 9)
-					continue;
-				
-				putchar(',');
-				putchar(' ');
+				if (first_digit != 7 || second_digit != 8 || third_digit != 9)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
 		}
 	}
@@ -38,3 +37,4 @@ int main(void)
 
 	return (0);
 }
+

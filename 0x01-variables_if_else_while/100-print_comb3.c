@@ -1,23 +1,35 @@
 #include <stdio.h>
 
-int main() {
-    int i, j;
+/**
+ * main - Entry point of the program
+ *
+ * Description: This program prints all possible combinations
+ * of two different digits in ascending order.
+ *
+ * Return: Always 0 (success)
+ */
+int main(void)
+{
+	int first_digit;
+	int second_digit;
 
-    for (i = 0; i < 10; i++) {
-        for (j = i + 1; j < 10; j++) {
-            putchar(i + '0');
-            putchar(j + '0');
-            putchar(',');
-            putchar(' ');
-        }
-    }
+	for (first_digit = 0; first_digit < 10; first_digit++)
+	{
+		for (second_digit = first_digit + 1; second_digit < 10; second_digit++)
+		{
+			putchar(first_digit + '0');
+			putchar(second_digit + '0');
 
-    // Remove the last comma and space
-    putchar('\b');
-    putchar('\b');
-    
-    putchar('\n');
+			if (first_digit != 8 || second_digit != 9)
+			{
+				putchar(',');
+				putchar(' ');
+			}
+		}
+	}
 
-    return 0;
+	putchar('\n');
+
+	return (0);
 }
 
