@@ -1,31 +1,33 @@
-#include#include <stdlib.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
 
 /**
- * free_list - frees a linked list
- * @head: list_t list to be freed
+ * free_list - function that frees a singly linked list.
+ * @head: pointer to singly linked list.
+ *
+ * Return: no return.
+ *
  */
+
 void free_list(list_t *head)
 {
-	list_t *temp;
+	list_t *temp_variable;
+	/* assign temp_variable to head */
+	temp_variable = head;
 
-	while (head)
+	/* check if head is NULL if yes the list is empty and we just return */
+	while (head != NULL)
 	{
-		temp = head->next;
-		free(head->str);
-		free(head);
-		head = temp;
+		/* save the head in a temp variable */
+		temp_variable = head;
+		/* make the head point to the next node on list */
+		head = head->next;
+		/* free the str */
+		free(temp_variable->str);
+		/* free temp_variable and head just points to the rest of the list */
+		free(temp_variable);
 	}
-} <stdio.h>
-
-void first(void) __attribute__ ((constructor));
-
-/**
- * first - prints a sentence before the main
- * function is executed
- */
-void first(void)
-{
-	printf("You're beat! and yet, you must allow,\n");
-	printf("I bore my house upon my back!\n");
+	/* free the head */
+	free(head);
 }
